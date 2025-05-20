@@ -1,6 +1,6 @@
 # 1337Codes MySQL Cheat Sheet
 
-mysql -u root -p'root' -h 192.168.148.16 -P 3306 --ssl-verify-server-cert=disabled
+mysql -u root -p'root' -h 192.168.1.13 -P 3306 --ssl-verify-server-cert=disabled
 
 MySQL Server Instance  
 ├── Databases (Schemas)  

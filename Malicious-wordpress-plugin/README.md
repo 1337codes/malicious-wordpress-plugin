@@ -22,6 +22,7 @@ Then:
 
 ```bash
 # Make the plugin executable (optional for PoC)
+cd ..
 sudo chmod +x malicious-plugin.php
 
 # Zip the plugin for upload or transfer

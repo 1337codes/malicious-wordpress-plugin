@@ -41,7 +41,7 @@ SQL Server Instance
 ## 🔧 SQL Server Cheat Sheet – Common System Views & Queries
 
 ```
-impacket-mssqlclient Administrator:Lab123@192.168.148.18 -windows-auth
+impacket-mssqlclient Administrator:User@192.168.1.13 -windows-auth
 ```
 
 **SQL Server Instance Structure**

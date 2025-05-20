@@ -3,7 +3,7 @@
 | **Command** | **Description** |
 | --- | --- |
 | **General** |     |
-| `mysql -u root -h docker.hackthebox.eu -P 3306 -p` | login to mysql database |
+| `mysql -u root -h docker.ELITE.eu -P 3306 -p` | login to mysql database |
 | `SHOW DATABASES` | List available databases |
 | `USE users` | Switch to database |
 | **Tables** |     |

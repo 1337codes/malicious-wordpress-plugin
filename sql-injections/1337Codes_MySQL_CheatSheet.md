@@ -1,6 +1,6 @@
 # 1337Codes MySQL Cheat Sheet
 
-mysql -u root -p'root' -h 192.168.1.13 -P 3306 --ssl-verify-server-cert=disabled
+mysql -u root -p'root' -h 192.168.148.16 -P 3306 --ssl-verify-server-cert=disabled
 
 MySQL Server Instance  
 ├── Databases (Schemas)  
@@ -43,3 +43,21 @@ MySQL Server Instance
 | **Show server version** | `SELECT VERSION();` | MySQL version info |
 | **Check server status** | `SHOW STATUS;` | Server statistics |
 | **List functions or procedures** | `SHOW FUNCTION STATUS;` / `SHOW PROCEDURE STATUS;` | Filter by DB name for clarity |
+
+---
+
+## 🧠 Tips & Tricks for MySQL Enumeration
+
+- 🔍 **Enumerate privileges** per user to discover overly privileged accounts.
+- 📌 Use `SHOW VARIABLES LIKE '%secure%';` to understand security-related configurations.
+- 🕵️ **Information disclosure** can be achieved using error-based enumeration (`AND (SELECT 1 FROM (SELECT COUNT(*), CONCAT(...))x)`).
+- 💡 MySQL errors can leak data during injections — test queries like `' AND (SELECT 1 FROM mysql.user LIMIT 1); --`.
+- ⚙️ Use `SHOW GLOBAL VARIABLES;` and `SHOW GLOBAL STATUS;` to enumerate configuration and server state.
+
+---
+
+## 🛡️ Post-Exploitation
+
+- 📝 Check logs: `SHOW VARIABLES LIKE 'log_error';` then read it using `LOAD_FILE()`.
+- 🐚 File read/write via `SELECT LOAD_FILE('/etc/passwd');` and `INTO OUTFILE`.
+- 🔗 Use `SELECT ... INTO DUMPFILE` for potential code execution vectors (Web shells, etc.).

@@ -67,6 +67,7 @@ SQL Server Instance
 
 ## ✨ Additional Enumeration & Tips
 
+| **Task** | **SQL Command / View** | **Description** |
 | --- | --- | --- |
 | List all databases | `SELECT * FROM sys.databases;` | Lists all databases on the SQL Server instance |
 | List all tables in current database | `SELECT * FROM sys.tables;` | Shows user-defined tables |
@@ -86,6 +87,7 @@ SQL Server Instance
 | See object dependencies | `SELECT * FROM sys.sql_expression_dependencies;` | Shows dependencies between objects |
 | View indexes | `SELECT * FROM sys.indexes;` | Shows indexes on all tables |
 | List triggers | `SELECT * FROM sys.triggers;` | View all DML and DDL triggers |
+
 
 
 ---
